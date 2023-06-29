@@ -1,26 +1,31 @@
 const router = require('express').Router();
 
-const { get } = require('mongoose');
 const {
-
+    getAllUsers,
+    getSingleUser,
+    createUser,
+    addNewFriend,
+    updateUser,
+    deleteUser,
+    deleteFriend
 } = require('../../controllers/userController.js')
 
 // /api/users
 router.route('/')
     .get(getAllUsers)
-    .post(postUser);
+    .post(createUser);
 
 // /api/user/:userId
 router 
     .route('/:userId')
     .get(getSingleUser)
     .put(updateUser)
-    .delete(deleteCourse);
+    .delete(deleteUser);
 
 // /api/user/:userId/friends/:friendId
 router
     .route('/:userId/friends/:friendId')
-    .post(postNewFriend)
+    .post(addNewFriend)
     .delete(deleteFriend)
 
-module.exports = router
+module.exports = router;
