@@ -17,14 +17,14 @@ const thoughtSchema = new Schema (
             type: String,
             required: true
         },
-        reactions: [
-            //
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'reactionSchema'
-            }
-        ],
-    }
+        reactions: [reactionSchema],
+    },
+    {
+        toJSON: {
+          virtuals: true,
+        },
+        id: false,
+      }
 )
 
 thoughtSchema
