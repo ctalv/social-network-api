@@ -41,4 +41,4 @@ reactionSchema
         return this.createdAt.toLocaleString('en-US', { timeZone: 'UTC' })
     })
 
-module.export = reactionSchema;
+module.exports = reactionSchema;

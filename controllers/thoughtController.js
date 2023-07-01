@@ -50,7 +50,7 @@ module.exports = {
       },
 
     // create a new reation
-    async createNewThought(req, res) {
+    async createReaction(req, res) {
             console.log('You are adding a new thought!');
             console.log(req.body)
     

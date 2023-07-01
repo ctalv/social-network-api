@@ -19,6 +19,7 @@ connection.once('open', async () => {
         await connection.dropCollection('thoughts')
     }
 
+    console.log(Thought)
     console.log(User)
     console.log(Thought)
 
