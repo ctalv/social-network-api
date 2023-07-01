@@ -1,6 +1,6 @@
 // require connection.js, models, and data
 const connection = require('../config/connection');
-const { User, Thought } = require('../models')
+const { User, Thought } = require('../models');
 const { getUserData, getThoughtData } = require('./data')
 // start the seeding runtime timer?
 
@@ -19,16 +19,20 @@ connection.once('open', async () => {
         await connection.dropCollection('thoughts')
     }
 
+    console.log(User)
+    console.log(Thought)
+
     const users = getUserData();
     await User.collection.insertMany(users);
+    console.log(users)
 
     const thoughts = getThoughtData();
     await Thought.collection.insertMany(thoughts);
 
 
+    // log out
     console.table(users);
     console.info('Seeding complete! 🌱');
     process.exit(0);
 });
 
-// log out
