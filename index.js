@@ -20,4 +20,4 @@ db.once('open', () => {
   app.listen(PORT, () => {
     console.log(`API server for social media site running on port ${PORT}!`);
   });
-});
+}); 
