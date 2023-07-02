@@ -15,7 +15,7 @@
   "author": "Claire Alverson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ctalv/social-network-api/issues"
+    "url": "https://github.com/ctalv/social-network-api"
   },
   "homepage": "https://github.com/ctalv/social-network-api#readme",
   "dependencies": {

@@ -4,17 +4,18 @@ module.exports = {
     // get all the users
     async getAllUsers(req, res) {
         try {
-            // const users = await User.find().populate('thoughts');
-            const users = await User.aggregate([
-                {
-                  $lookup: {
-                    from: 'thoughts', // Assuming the name of the collection is 'thoughts'
-                    localField: '_id',
-                    foreignField: 'userId',
-                    as: 'thoughts',
-                  },
-                },
-              ]);
+            const users = await User.find()
+            // .populate('thoughts');
+            // const users = await User.aggregate([
+            //     {
+            //       $lookup: {
+            //         from: 'thoughts', // Assuming the name of the collection is 'thoughts'
+            //         localField: '_id',
+            //         foreignField: 'userId',
+            //         as: 'thoughts',
+            //       },
+            //     },
+            //   ]);
           
             res.status(200).send(users)
         } catch (err) {
@@ -64,7 +65,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-    // delete a single user and associated thoughs
+    // delete a single user and associated thoughts
     async deleteUser(req, res) {
         try {
           const user = await User.findOneAndDelete({ _id: req.params.userId });
