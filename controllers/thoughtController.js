@@ -29,26 +29,16 @@ module.exports = {
     // create a new thought (for a particular user)
     async createNewThought(req, res) {
             console.log('You are adding a new thought!');
-            console.log(-2, req.body)
     
             const thought = await Thought.create(req.body); 
 
             try {
-
-                console.log(-1, thought)
-                console.log(0, thought._id.toString())
-                // console.log(1, req.body.userId)
-                // console.log(2, thought.userId.toString())
-                console.log(6, req.body.thoughtText)
-
                 const user = await User.findOneAndUpdate(
                     { _id: req.body.userId },
                     { $addToSet: { thoughts: thought._id.toString() }},
                     { runValidators: true, new: true }
                 );
-                    console.log(7, req.body.userId)
-                    console.log(8, thought._id.toString())
-                console.log(3, user)
+
     
                 if (!user) {
                     // If no user found, delete the newly created thought
@@ -65,10 +55,7 @@ module.exports = {
 
     // create a new reation
     async createReaction(req, res) {
-            console.log('You are adding a new reaction!');
-            console.log(req.body.reaction)
-    
-            console.log(req.params.thoughtId)
+
             try {
                 const thought = await Thought.findOneAndUpdate(
                     { _id: req.params.thoughtId },
@@ -76,7 +63,6 @@ module.exports = {
                     { runValidators: true, new: true }
                 );
     
-                console.log(1, thought)
 
                 if (!thought) {
                     return res.status(404).json({ message: 'No user found with that ID.'});
@@ -116,7 +102,6 @@ module.exports = {
             return res.status(404).json({ message: 'No user with that ID' });
           }
     
-          
           res.json({ message: 'Thought deleted!' })
         } catch (err) {
           res.status(500).json(err);
@@ -124,9 +109,6 @@ module.exports = {
       },
     // delete a reaction by reationId
     async deleteReaction(req, res) {
-        console.log(req.params)
-
-
 
         try {
             

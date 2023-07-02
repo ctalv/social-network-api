@@ -5,17 +5,6 @@ module.exports = {
     async getAllUsers(req, res) {
         try {
             const users = await User.find()
-            // .populate('thoughts');
-            // const users = await User.aggregate([
-            //     {
-            //       $lookup: {
-            //         from: 'thoughts', // Assuming the name of the collection is 'thoughts'
-            //         localField: '_id',
-            //         foreignField: 'userId',
-            //         as: 'thoughts',
-            //       },
-            //     },
-            //   ]);
           
             res.status(200).send(users)
         } catch (err) {
@@ -31,7 +20,7 @@ module.exports = {
             if (!user) {
                 return res.status(404).json({ message: 'No user with that ID' });
             }
-
+            
             res.status(200).json(user);
         } catch (err) {
             res.status(500).json(err);
@@ -85,7 +74,6 @@ module.exports = {
     // add a new friend to user friend list
       async addNewFriend(req, res) {
         console.log('You are adding a new friend!');
-        console.log(req.body)
 
         try {
             const user = await User.findOneAndUpdate(
