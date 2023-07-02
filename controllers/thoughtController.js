@@ -6,7 +6,7 @@ module.exports = {
     async getAllThoughts(req, res) {
         try {
             const thoughts = await Thought.find();
-            res.status(thoughts)
+            res.status(200).send(thoughts)
         } catch (err) {
             res.status(500).json(err); hs
         }
@@ -21,7 +21,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No thought with that ID' });
             }
 
-            res.json(thought);
+            res.json(200).send(thought);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -42,7 +42,7 @@ module.exports = {
                     return res.status(404).json({ message: 'No user found with that ID.'});
                 }
     
-                res.json(user);
+                res.json(200).send(user);
     
             } catch (err) {
                 res.status(500).json(err)
@@ -65,7 +65,7 @@ module.exports = {
                     return res.status(404).json({ message: 'No user found with that ID.'});
                 }
     
-                res.json(user);
+                res.json(200).send(user);
     
             } catch (err) {
                 res.status(500).json(err)

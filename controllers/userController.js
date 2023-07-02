@@ -5,7 +5,7 @@ module.exports = {
     async getAllUsers(req, res) {
         try {
             const users = await User.find();
-            res.status(users)
+            res.status(200).send(users)
         } catch (err) {
             res.status(500).json(err);
         }
@@ -20,7 +20,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No user with that ID' });
             }
 
-            res.json(user);
+            res.json(200).send(user);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -29,7 +29,7 @@ module.exports = {
     async createUser(req, res) {
         try {
             const user = await User.create(req.body);
-            res.json(user)
+            res.json(200).send(user)
         } catch (err) {
             res.status(500).json(err);
         }
@@ -86,7 +86,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No user found with that ID.'});
             }
 
-            res.json(user);
+            res.json(200).send(user);
 
         } catch (err) {
             res.status(500).json(err)
@@ -105,7 +105,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No user found with that ID.'});
             };
 
-            res.json(user);
+            res.json(200).send(user);
 
         } catch (err) {
             res.status(500).json(err);

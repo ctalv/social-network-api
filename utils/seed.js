@@ -21,14 +21,15 @@ connection.once('open', async () => {
 
     console.log(Thought)
     console.log(User)
-    console.log(Thought)
+  
+    const thoughts = getThoughtData();
+    await Thought.collection.insertMany(thoughts);
 
     const users = getUserData();
     await User.collection.insertMany(users);
     console.log(users)
 
-    const thoughts = getThoughtData();
-    await Thought.collection.insertMany(thoughts);
+  
 
 
     // log out

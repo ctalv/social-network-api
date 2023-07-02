@@ -55,6 +55,20 @@ const thoughts = [
 // data functions
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
+const getThoughtData = () => {
+    const results = []; 
+    for (let i = 0; i < Math.floor(Math.random() * (99 - 18 + 1) + 18); i++) {
+        const user = getRandomArrItem(usernames);
+        const thought = getRandomArrItem(thoughts);
+      results.push({
+        thoughtText: thought,
+      });
+      thoughts.slice(thoughts.indexOf(thought));
+    }
+    return results;
+
+}
+
 const getUserData = () => {
     const results = [];
     for (let i = 0; i < usernames.length; i++) {
@@ -63,26 +77,16 @@ const getUserData = () => {
       results.push({
         username: usernames[i],
         email: emails[i],
-        thoughts: thought,
+        // thoughts: thought.id,
       });
     }
     return results;
 }
 
-
-const getThoughtData = () => {
-    const results = [];
-    for (let i = 0; i < thoughts.length; i++) {
-        const user = getRandomArrItem(usernames);
-        const thought = getRandomArrItem(thoughts);
-      results.push({
-        username: user,
-        thoughtText: thought,
-      });
-      thoughts.slice(thoughts.indexOf(thought));
-    }
-    return results;
-
+const addThoughtData = () => {
+    
 }
+
+
 // export data
 module.exports = { getUserData, getThoughtData}
