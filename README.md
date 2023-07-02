@@ -37,7 +37,7 @@ To use this application, you must:
         npm start
 9. Open Insomnia and run the routes as you please at the specified port.
 
-[DEMO Social Media API.webm](https://github.com/ctalv/e-commerce-back-end/assets/122413805/3a919d31-64e9-45d5-bbbb-15b41176680a)
+[Uploading DEMO Social Media Network API.webm…]()
 
  
 ## Credits
