@@ -1,10 +1,10 @@
-const { Schema } = require('mongoose');
+const { Schema, Types } = require('mongoose');
 
 const reactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
-            default: new Schema.Types.ObjectId
+            default: () => new Types.ObjectId(),
         },
         reactionBody: {
             type: String,
@@ -33,12 +33,12 @@ const reactionSchema = new Schema(
 //     })
 
 
-reactionSchema
-    .virtual('formattedDate')
-    .get(function () {
-        // will not be a model, but rather 
-        // will be used as the reaction field's subdocument schema in the Thought model
-        return this.createdAt.toLocaleString('en-US', { timeZone: 'UTC' })
-    })
+// reactionSchema
+//     .virtual('formattedDate')
+//     .get(function () {
+//         // will not be a model, but rather 
+//         // will be used as the reaction field's subdocument schema in the Thought model
+//         return this.createdAt.toLocaleString('en-US', { timeZone: 'UTC' })
+//     })
 
-module.export = reactionSchema;
+module.exports = reactionSchema;
