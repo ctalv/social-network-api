@@ -25,16 +25,13 @@ connection.once('open', async () => {
     const thoughts = getThoughtData();
     const users = getUserData(thoughts);
 
+    console.log(users)
+    console.log(thoughts)
+
     await Thought.collection.insertMany(thoughts);
     await User.collection.insertMany(users);
-    console.log(users)
-
-  
-
 
     // log out
-    console.table(users);
-    console.log(User)
     console.info('Seeding complete! 🌱');
     process.exit(0);
 });
