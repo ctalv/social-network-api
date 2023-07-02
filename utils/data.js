@@ -1,33 +1,4 @@
 // seed data in array format
-userData = [
-    {
-        username: 'ctalv',
-        email: 'ctalver99@gmail.com',
-    },
-    {
-        username: 'firebug',
-        email: 'firebug@hotmail.com',
-    },
-    {
-        username: 'jasfo_gulse',
-        email: 'wjalver2015@gmail.com',
-    },
-    {
-        username: 'chicken2',
-        email: 'hayhay@aol.com',
-    },
-]
-
-thoughtData = [
-    {
-        thoughtText: 'I am livid! I wanted cereal and we DIDNT HAVE MILK!!',
-        createdAt: 'May 7th, 2020 at 3:00 am',
-        username: 'chicken2',
-        reaction: []
-    },
-]
-
-
 const usernames = [
     'ctalv',
     'firebug',
@@ -55,38 +26,82 @@ const thoughts = [
 // data functions
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
+// const getThoughtData = () => {
+//     const results = []; 
+//     for (let i = 0; i < Math.floor(Math.random() * thoughts.length + 1 ); i++) {
+//         const thought = getRandomArrItem(thoughts);
+//       results.push({
+//         thoughtText: thought,
+//       });
+//       thoughts.slice(thoughts.indexOf(thought));
+//     }
+//     return results;
+
+// }
+
+
+// const getUserData = () => {
+//     const results = [];
+//     for (let i = 0; i < usernames.length; i++) {
+//         const thought = getRandomArrItem(thoughts);
+//         thoughts.slice(thoughts.indexOf(thought));
+//       results.push({
+//         username: usernames[i],
+//         email: emails[i],
+//         // thoughts: thought.id,
+//       });
+//     }
+//     return results;
+// }
+
+
+
 const getThoughtData = () => {
-    const results = []; 
-    for (let i = 0; i < Math.floor(Math.random() * (99 - 18 + 1) + 18); i++) {
-        const user = getRandomArrItem(usernames);
+    const results = [];
+    for (let i = 0; i < Math.floor(Math.random() * thoughts.length + 1); i++) {
         const thought = getRandomArrItem(thoughts);
-      results.push({
-        thoughtText: thought,
-      });
-      thoughts.slice(thoughts.indexOf(thought));
+        results.push({
+            thoughtText: thought
+        });
+        thoughts.splice(thoughts.indexOf(thought), 1);
     }
     return results;
+};
 
-}
-
-const getUserData = () => {
+const getUserData = (thoughts) => {
     const results = [];
     for (let i = 0; i < usernames.length; i++) {
         const thought = getRandomArrItem(thoughts);
-        thoughts.slice(thoughts.indexOf(thought));
-      results.push({
-        username: usernames[i],
-        email: emails[i],
-        // thoughts: thought.id,
-      });
+        results.push({
+            username: usernames[i],
+            email: emails[i],
+            thoughts: thought
+        });
     }
     return results;
-}
-
-const addThoughtData = () => {
-    
-}
-
+};
 
 // export data
-module.exports = { getUserData, getThoughtData}
+module.exports = { getUserData, getThoughtData };
+
+// const getRandomThoughts = (thoughts) => {
+//     const randomThoughtsCount = Math.floor(Math.random() * thoughts.length + 1);
+//     const randomThoughts = [];
+//     const usedIndexes = [];
+
+//     for (let i = 0; i < randomThoughtsCount; i++) {
+//         let randomIndex;
+//         do {
+//             randomIndex = Math.floor(Math.random() * thoughts.length);
+//         } while (usedIndexes.includes(randomIndex));
+
+//         usedIndexes.push(randomIndex);
+//         randomThoughts.push(thoughts[randomIndex]._id);
+//     }
+
+//     return randomThoughts;
+// };
+
+
+// // export data
+// module.exports = { getUserData, getThoughtData }
